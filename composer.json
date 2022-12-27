@@ -28,7 +28,7 @@
         }
 		],
     "autoload": {
-        "psr-0": { "ICalendarOrg": ["src/"] }
+        "psr-4": {"ICalendarOrg\\": "src/ICalendarOrg/"}
     },
     "require": {
         "php": ">=7.4 <8.3"
