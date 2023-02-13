@@ -8,7 +8,6 @@
  * @license     GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
  * @link	http://icalendar.org/php-library.html
  */
-
 include '../vendor/autoload.php';
 
 /**
@@ -40,7 +39,7 @@ $eventobj->addNode(new \ICalendarOrg\ZCiCalDataNode('DTEND:' . \ICalendarOrg\ZDa
 
 // UID is a required item in VEVENT, create unique string for this event
 // Adding your domain to the end is a good way of creating uniqueness
-$uid = date('Y-m-d-H-i-s') . '@demo.icalendar.org';
+$uid = \date('Y-m-d-H-i-s') . '@demo.icalendar.org';
 $eventobj->addNode(new \ICalendarOrg\ZCiCalDataNode('UID:' . $uid));
 
 // DTSTAMP is a required item in VEVENT
@@ -51,4 +50,3 @@ $eventobj->addNode(new \ICalendarOrg\ZCiCalDataNode('Description: This is a simp
 
 // write iCalendar feed to stdout
 echo $icalobj->export();
-

@@ -8,12 +8,9 @@
  * @license     GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
  * @link	http://icalendar.org/php-library.html
  */
-
 include '../vendor/autoload.php';
 
-/*
- * Create Event Example With Local Timezone
- */
+// Create Event Example With Local Timezone
 
 $title = 'Event in New York timezone';
 // date/time is in SQL datetime format
@@ -28,7 +25,7 @@ $tzid = 'America/New_York';
 $icalobj = new \ICalendarOrg\ZCiCal();
 
 // Add timezone data
-\ICalendarOrg\ZCTimeZoneHelper::getTZNode(substr($event_start,0,4),substr($event_end,0,4),$tzid, $icalobj->curnode);
+\ICalendarOrg\ZCTimeZoneHelper::getTZNode(\substr($event_start, 0, 4), \substr($event_end, 0, 4), $tzid, $icalobj->curnode);
 
 // create the event within the ical object
 $eventobj = new \ICalendarOrg\ZCiCalNode('VEVENT', $icalobj->curnode);
@@ -44,7 +41,7 @@ $eventobj->addNode(new \ICalendarOrg\ZCiCalDataNode('DTEND:' . \ICalendarOrg\ZDa
 
 // UID is a required item in VEVENT, create unique string for this event
 // Adding your domain to the end is a good way of creating uniqueness
-$uid = date('Y-m-d-H-i-s') . '@demo.icalendar.org';
+$uid = \date('Y-m-d-H-i-s') . '@demo.icalendar.org';
 $eventobj->addNode(new \ICalendarOrg\ZCiCalDataNode('UID:' . $uid));
 
 // DTSTAMP is a required item in VEVENT
@@ -52,4 +49,3 @@ $eventobj->addNode(new \ICalendarOrg\ZCiCalDataNode('DTSTAMP:' . \ICalendarOrg\Z
 
 // write iCalendar feed to stdout
 echo $icalobj->export();
-
