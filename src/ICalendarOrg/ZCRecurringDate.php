@@ -423,7 +423,6 @@ class ZCRecurringDate
 	 */
 	public function getDates(?int $maxdate = null) : array
 		{
-		//$this->debug = 2;
 		self::debug(1, 'getDates()');
 		$nextdate = $enddate = $this->startdate;
 		$rdates = [];
@@ -703,7 +702,6 @@ class ZCRecurringDate
 								{
 								$rdates[] = $wdate;
 								$count++;
-								//break;
 								}
 							}
 						}

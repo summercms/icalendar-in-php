@@ -18,7 +18,7 @@ class ZCiCalDataNodeTest extends \PHPUnit\Framework\TestCase
 		{
 		$dataNode = new \ICalendarOrg\ZCiCalDataNode($line);
 		$generated = "{$dataNode}";
-		$this->assertEquals($line . "\n", $generated, $line . ' has an error');
+		$this->assertEquals($line . "\r\n", $generated, $line . ' has an error');
 		}
 
 	/**
@@ -30,11 +30,11 @@ class ZCiCalDataNodeTest extends \PHPUnit\Framework\TestCase
 		{
 		return [
 			['ACTION:AUDIO'],
-			['ATTACH;FMTTYPE=application/postscript:ftp://example.com/pub/conf/bkgrnd.ps'],
-			['ATTACH;FMTTYPE=audio/basic:http://example.com/pub/audio-files/ssbanner.aud'],
+			['ATTACH;FMTTYPE=application/postscript:ftp://example.com/pub/bkgrnd.ps'],
+			['ATTACH;FMTTYPE=audio/basic:http://example.com/pub/ssbanner.aud'],
 			['ATTENDEE;PARTSTAT=ACCEPTED:mailto:jqpublic@example.com'],
 			['ATTENDEE;RSVP=TRUE:mailto:jsmith@example.com'],
-			['ATTENDEE;RSVP=TRUE;ROLE=REQ-PARTICIPANT;CUTYPE=GROUP:mailto:employee-A@example.com'],
+			['ATTENDEE;RSVP=TRUE;ROLE=REQ-PARTICIPANT;CUTYPE=GROUP:mailto:a@ex.com'],
 			['CATEGORIES:CONFERENCE'],
 			['CATEGORIES:MEETING'],
 			['CATEGORIES:MEETING,PROJECT'],
@@ -53,9 +53,11 @@ Agenda
 2. Definitionof project processes.
 3. Review of project schedule.
 Participants: John Smith, Jane Doe, Jim Dandy
--It was decided that the requirements need to be signed off by product marketing.
+-It was decided that the requirements need to be signed off by
+	product marketing.
 -Project processes were accepted.
--Project schedule needs to account for scheduled holidays and employee vacation time. Check with HR for specific dates.
+-Project schedule needs to account for scheduled holidays and
+	employee vacation time. Check with HR for specific dates.
 -New schedule will be distributed by Friday.
 -Next weeks meeting is cancelled. No meeting until 3/23.'],
 			['DTEND:19960920T220000Z'],

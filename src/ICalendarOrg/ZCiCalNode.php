@@ -143,7 +143,6 @@ class ZCiCalNode
 
 		if ($level > 5)
 			{
-			//die("levels nested too deep<br/>\n");
 			throw new \Exception('levels nested too deep');
 			}
 		$txtstr .= 'BEGIN:' . $node->getName() . "\r\n";
@@ -257,7 +256,6 @@ class ZCiCalNode
 		if ($level > 5)
 			{
 			exit("levels nested too deep<br/>\n");
-			//return;
 			}
 
 		for ($i = 0; $i < $level; $i++)

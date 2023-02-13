@@ -75,7 +75,6 @@ class ZCiCalDataNode
 			{
 			$value = \str_replace('`~', '\\:', \substr($line, $i + 1));
 			// fix escaped characters (don't see double quotes in spec but Apple apparently uses it in iCal)
-//			$value = \str_replace(['\\N', '\\n', '\\"'], ["\n", "\n", '"'], $value);
 			$tvalue = \str_replace('\\,', '`~', $value);
 			$tvalue = \explode(',', $tvalue);
 			$value = \str_replace('`~', '\\,', $tvalue);
@@ -126,21 +125,24 @@ class ZCiCalDataNode
 			$output .= ':' . $this->getValues();
 			}
 
-		$final = $output;
+		$final = '';
 
-		if (\strlen($final) > 70)
+		$parts = \explode("\n", $output);
+
+		foreach ($parts as $index => $value)
 			{
-			$final = '';
+			$part = '';
 
-			while (\strlen($output) > 70)
+			while (\strlen($value) > 70)
 				{
-				$final = $final . \substr($output, 0, 67) . " \r\n";
-				$output = \substr($output, 67);
+				$part = $part . \substr($value, 0, 67) . " \r\n";
+				$value = \substr($value, 67);
 				}
-			$final .= $output;
+			$part .= $value;
+			$parts[$index] = $part;
 			}
 
-		return $final . "\r\n";
+		return \implode("\n", $parts) . "\r\n";
 		}
 
 	/**
