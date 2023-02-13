@@ -50,3 +50,5 @@ $eventobj->addNode(new \ICalendarOrg\ZCiCalDataNode('Description: This is a simp
 
 // write iCalendar feed to stdout
 echo $icalobj->export();
+
+file_put_contents('simpleEvent.ics', $icalobj->export());

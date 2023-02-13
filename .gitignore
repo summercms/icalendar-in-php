@@ -1,6 +1,7 @@
 vendor/
 .idea/
 bin/
+examples/simpleEvent.ics
 composer.lock
 .php_cs.cache
 .phpunit.result.cache

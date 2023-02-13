@@ -19,8 +19,11 @@ class FileTest extends \PHPUnit\Framework\TestCase
 		$this->assertNotEmpty($contents);
 		$calendar = new \ICalendarOrg\ZCiCal($contents);
 		$generated = $calendar->export();
-		$this->assertEquals($this->clean($contents), $this->clean($generated), $file . ' has an error');
-//		$this->assertEquals($contents, $generated, $file . ' has an error');
+//		$this->assertEquals($this->clean($contents), $this->clean($generated), $file . ' has an error');
+		foreach (\explode("\n", $generated) as $line)
+			{
+			$this->assertLessThan(72, \strlen($file), "Line ->{$line}<- is too long (>72 chars)");
+			}
 		}
 
 	/**

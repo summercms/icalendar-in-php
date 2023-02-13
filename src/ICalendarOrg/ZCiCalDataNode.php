@@ -126,7 +126,21 @@ class ZCiCalDataNode
 			$output .= ':' . $this->getValues();
 			}
 
-		return $output . "\n";
+		$final = $output;
+
+		if (\strlen($final) > 70)
+			{
+			$final = '';
+
+			while (\strlen($output) > 70)
+				{
+				$final = $final . \substr($output, 0, 67) . " \r\n";
+				$output = \substr($output, 67);
+				}
+			$final .= $output;
+			}
+
+		return $final . "\r\n";
 		}
 
 	/**

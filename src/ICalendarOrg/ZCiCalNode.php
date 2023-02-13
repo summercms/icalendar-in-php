@@ -146,7 +146,7 @@ class ZCiCalNode
 			//die("levels nested too deep<br/>\n");
 			throw new \Exception('levels nested too deep');
 			}
-		$txtstr .= 'BEGIN:' . $node->getName() . "\n";
+		$txtstr .= 'BEGIN:' . $node->getName() . "\r\n";
 
 		if (\property_exists($node, 'data'))
 			{
@@ -173,7 +173,7 @@ class ZCiCalNode
 				$txtstr .= $node->export($c, $level + 1);
 				}
 			}
-		$txtstr .= 'END:' . $node->getName() . "\n";
+		$txtstr .= 'END:' . $node->getName() . "\r\n";
 
 		return $txtstr;
 		}
