@@ -19,7 +19,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
 		$this->assertNotEmpty($contents);
 		$calendar = new \ICalendarOrg\ZCiCal($contents);
 		$generated = $calendar->export();
-//		$this->assertEquals($this->clean($contents), $this->clean($generated), $file . ' has an error');
+
 		foreach (\explode("\n", $generated) as $line)
 			{
 			$this->assertLessThan(72, \strlen($file), "Line ->{$line}<- is too long (>72 chars)");
@@ -33,7 +33,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
 	 *
 	 * @return array<array<string, string>>
 	 */
-	public function providerICSFiles() : array
+	public static function providerICSFiles() : array
 		{
 		$iterator = new \DirectoryIterator(__DIR__ . '/examples');
 
@@ -49,17 +49,5 @@ class FileTest extends \PHPUnit\Framework\TestCase
 			}
 
 		return $contents;
-		}
-
-	private function clean(string $text) : string
-		{
-		$text = \str_replace("\r", '', $text);
-
-		while (\strpos($text, '  '))
-			{
-			$text = \str_replace('  ', ' ', $text);
-			}
-
-		return $text;
 		}
 	}

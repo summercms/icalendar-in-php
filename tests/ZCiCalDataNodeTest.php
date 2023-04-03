@@ -26,7 +26,7 @@ class ZCiCalDataNodeTest extends \PHPUnit\Framework\TestCase
 	 *
 	 * @return array<array<string>>
 	 */
-	public function providerZCiCalDataNode() : array
+	public static function providerZCiCalDataNode() : array
 		{
 		return [
 			['ACTION:AUDIO'],
