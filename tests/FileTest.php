@@ -22,8 +22,11 @@ class FileTest extends \PHPUnit\Framework\TestCase
 
 		foreach (\explode("\n", $generated) as $line)
 			{
-			$this->assertLessThan(72, \strlen($file), "Line ->{$line}<- is too long (>72 chars)");
+			$this->assertLessThan(72, \strlen($line), "Line ->{$line}<- in file {$file} is too long (>72 chars)");
 			}
+
+		$resultsFile = __DIR__ . '/results/' . \basename($file);
+		\file_put_contents($resultsFile, $generated);
 		}
 
 	/**
