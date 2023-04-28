@@ -85,13 +85,6 @@ class ZCRecurringDate
 	public ?string $freq = null;
 
 	/**
-	 * start of week number (i.e. 0 for Sunday, 5 for Friday)
-	 *
-	 * @var ?integer
-	 */
-	public ?int $weekstart = null;
-
-	/**
 	 * inteval of repeating event (i.e. every 2 weeks, every 6 months)
 	 *
 	 */
@@ -130,6 +123,13 @@ class ZCRecurringDate
 	 * @var int $until UTC Unix Timestamp
 	 */
 	public ?int $until = null;
+
+	/**
+	 * start of week number (i.e. 0 for Sunday, 5 for Friday)
+	 *
+	 * @var ?integer
+	 */
+	public ?int $weekstart = null;
 
 	/**
 	 * Max year supported

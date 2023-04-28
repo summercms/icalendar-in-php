@@ -12,16 +12,6 @@
 class ZCiCalDataNodeTest extends \PHPUnit\Framework\TestCase
 	{
 	/**
-	 * @dataProvider providerZCiCalDataNode
-	 */
-	public function testZCiCalDataNode(string $line) : void
-		{
-		$dataNode = new \ICalendarOrg\ZCiCalDataNode($line);
-		$generated = "{$dataNode}";
-		$this->assertEquals($line . "\r\n", $generated, $line . ' has an error');
-		}
-
-	/**
 	 * Expressions data provider
 	 *
 	 * @return array<array<string>>
@@ -102,5 +92,15 @@ Participants: John Smith, Jane Doe, Jim Dandy
 			['URL:http://www.example.com/calendar/busytime/jsmith.ifb'],
 			['VERSION:2.0'],
 		];
+		}
+
+	/**
+	 * @dataProvider providerZCiCalDataNode
+	 */
+	public function testZCiCalDataNode(string $line) : void
+		{
+		$dataNode = new \ICalendarOrg\ZCiCalDataNode($line);
+		$generated = "{$dataNode}";
+		$this->assertEquals($line . "\r\n", $generated, $line . ' has an error');
 		}
 	}

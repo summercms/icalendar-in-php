@@ -12,24 +12,6 @@
 class FileTest extends \PHPUnit\Framework\TestCase
 	{
 	/**
-	 * @dataProvider providerICSFiles
-	 */
-	public function testICSFiles(string $contents, string $file) : void
-		{
-		$this->assertNotEmpty($contents);
-		$calendar = new \ICalendarOrg\ZCiCal($contents);
-		$generated = $calendar->export();
-
-		foreach (\explode("\n", $generated) as $line)
-			{
-			$this->assertLessThan(72, \strlen($line), "Line ->{$line}<- in file {$file} is too long (>72 chars)");
-			}
-
-		$resultsFile = __DIR__ . '/results/' . \basename($file);
-		\file_put_contents($resultsFile, $generated);
-		}
-
-	/**
 	 * Expressions data provider
 	 *
 	 * Test all files in examples directory
@@ -52,5 +34,23 @@ class FileTest extends \PHPUnit\Framework\TestCase
 			}
 
 		return $contents;
+		}
+
+	/**
+	 * @dataProvider providerICSFiles
+	 */
+	public function testICSFiles(string $contents, string $file) : void
+		{
+		$this->assertNotEmpty($contents);
+		$calendar = new \ICalendarOrg\ZCiCal($contents);
+		$generated = $calendar->export();
+
+		foreach (\explode("\n", $generated) as $line)
+			{
+			$this->assertLessThan(72, \strlen($line), "Line ->{$line}<- in file {$file} is too long (>72 chars)");
+			}
+
+		$resultsFile = __DIR__ . '/results/' . \basename($file);
+		\file_put_contents($resultsFile, $generated);
 		}
 	}

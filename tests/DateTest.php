@@ -152,13 +152,6 @@ class DateTest extends \PHPUnit\Framework\TestCase
 		$this->assertEquals($stamp, ZDateHelper::getDateFromDay($stamp, 4, 4));
 		}
 
-	public function testIsToday() : void
-		{
-		$this->assertEquals(true, ZDateHelper::isToday(\time()));
-		$this->assertEquals(false, ZDateHelper::isToday(\strtotime('2019-10-30')));
-		$this->assertEquals(false, ZDateHelper::isToday(\strtotime('2222-10-30')));
-		}
-
 	public function testInDay() : void
 		{
 		$stamp = \strtotime('2222-10-30');
@@ -194,6 +187,13 @@ class DateTest extends \PHPUnit\Framework\TestCase
 		$this->assertEquals(true, ZDateHelper::isPast(\strtotime('2019-10-30')));
 		$this->assertEquals(true, ZDateHelper::isPast(\strtotime(\date('Y-m-d'))));
 		$this->assertEquals(false, ZDateHelper::isPast(\strtotime('2222-10-30')));
+		}
+
+	public function testIsToday() : void
+		{
+		$this->assertEquals(true, ZDateHelper::isToday(\time()));
+		$this->assertEquals(false, ZDateHelper::isToday(\strtotime('2019-10-30')));
+		$this->assertEquals(false, ZDateHelper::isToday(\strtotime('2222-10-30')));
 		}
 
 	public function testIsTomorrow() : void

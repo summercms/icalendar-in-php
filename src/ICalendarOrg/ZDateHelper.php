@@ -68,6 +68,25 @@ class ZDateHelper
 		}
 
 	/**
+	 * Return now as DateTime
+	 *
+	 * @param string $tzid PHP recognized timezone (default is UTC)
+	 */
+	public static function DTNow(string $tzid) : \DateTime
+		{
+		try
+			{
+			$dtz = new \DateTimeZone($tzid);
+			}
+		catch (\Exception $e)
+			{
+			$dtz = null;
+			}
+
+		return new \DateTime('now', $dtz);
+		}
+
+	/**
 	 * Format iCal date-time string to Unix timestamp
 	 *
 	 * @param string $datetime in iCal time format ( YYYYMMDD or YYYYMMDDTHHMMSS or YYYYMMDDTHHMMSSZ )
@@ -112,6 +131,73 @@ class ZDateHelper
 			}
 
 		return \gmmktime($hour, $minute, $second, $month, $day, $year);
+		}
+
+	/**
+	 * fromSqlDateTime()
+	 *
+	 * Take SQL timestamp and format to iCal date/time string
+	 *
+	 * @param string $datetime SQL timestamp, leave blank for current date/time
+	 *
+	 * @return string formatted iCal date/time string
+	 */
+	public static function fromSqlDateTime(?string $datetime = null) : string
+		{
+		\date_default_timezone_set('UTC');
+
+		if (null == $datetime)
+			{
+			$datetime = \time();
+			}
+		else
+			{
+			$datetime = \strtotime($datetime);
+			}
+
+		return \date('Ymd\THis', $datetime);
+		}
+
+	/**
+	 * fromUnixDate()
+	 *
+	 * Take Unix timestamp and format to iCal date string
+	 *
+	 * @param int $datetime Unix timestamp, leave blank for current date/time
+	 *
+	 * @return string formatted iCal date string
+	 */
+	public static function fromUnixDate(?int $datetime = null) : string
+		{
+		\date_default_timezone_set('UTC');
+
+		if (null == $datetime)
+			{
+			$datetime = \time();
+			}
+
+		return \date('Ymd', $datetime);
+		}
+
+	/**
+	 * fromUnixDateTime()
+	 *
+	 * Take Unix timestamp and format to iCal date/time string
+	 *
+	 * @param int $datetime Unix timestamp, leave blank for current date/time
+	 *
+	 * @return string formatted iCal date/time string
+	 */
+	public static function fromUnixDateTime(?int $datetime = null) : string
+		{
+		\date_default_timezone_set('UTC');
+
+		if (null == $datetime)
+			{
+			$datetime = \time();
+			}
+
+		return \date('Ymd\THis', $datetime);
 		}
 
 	/**
@@ -331,25 +417,6 @@ class ZDateHelper
 				|| ($begin <= $daystart && $end > $dayend);
 
 		return $inday;
-		}
-
-	/**
-	 * Return now as DateTime
-	 *
-	 * @param string $tzid PHP recognized timezone (default is UTC)
-	 */
-	public static function DTNow(string $tzid) : \DateTime
-		{
-		try
-			{
-			$dtz = new \DateTimeZone($tzid);
-			}
-		catch (\Exception $e)
-			{
-			$dtz = null;
-			}
-
-		return new \DateTime('now', $dtz);
 		}
 
 	/**
@@ -655,72 +722,5 @@ class ZDateHelper
 			}
 
 		return $date->format('Y-m-d H:i:s');
-		}
-
-	/**
-	 * fromUnixDate()
-	 *
-	 * Take Unix timestamp and format to iCal date string
-	 *
-	 * @param int $datetime Unix timestamp, leave blank for current date/time
-	 *
-	 * @return string formatted iCal date string
-	 */
-	public static function fromUnixDate(?int $datetime = null) : string
-		{
-		\date_default_timezone_set('UTC');
-
-		if (null == $datetime)
-			{
-			$datetime = \time();
-			}
-
-		return \date('Ymd', $datetime);
-		}
-
-	/**
-	 * fromUnixDateTime()
-	 *
-	 * Take Unix timestamp and format to iCal date/time string
-	 *
-	 * @param int $datetime Unix timestamp, leave blank for current date/time
-	 *
-	 * @return string formatted iCal date/time string
-	 */
-	public static function fromUnixDateTime(?int $datetime = null) : string
-		{
-		\date_default_timezone_set('UTC');
-
-		if (null == $datetime)
-			{
-			$datetime = \time();
-			}
-
-		return \date('Ymd\THis', $datetime);
-		}
-
-	/**
-	 * fromSqlDateTime()
-	 *
-	 * Take SQL timestamp and format to iCal date/time string
-	 *
-	 * @param string $datetime SQL timestamp, leave blank for current date/time
-	 *
-	 * @return string formatted iCal date/time string
-	 */
-	public static function fromSqlDateTime(?string $datetime = null) : string
-		{
-		\date_default_timezone_set('UTC');
-
-		if (null == $datetime)
-			{
-			$datetime = \time();
-			}
-		else
-			{
-			$datetime = \strtotime($datetime);
-			}
-
-		return \date('Ymd\THis', $datetime);
 		}
 	}
