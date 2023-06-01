@@ -17,21 +17,11 @@ class LinefoldingTest extends \PHPUnit\Framework\TestCase
 	 */
 	public function testLineFolding() : void
 		{
-		$sample = <<<EOS
-BEGIN:VCALENDAR
-PRODID;X-RICAL-TZSOURCE=TZINFO:-//Airbnb Inc//Hosting Calendar 0.8.8//EN
-CALSCALE:GREGORIAN
-VERSION:2.0
-BEGIN:VEVENT
-DTEND;VALUE=DATE:20230611
-DTSTART;VALUE=DATE:20230514
-UID:xxx@airbnb.com
-DESCRIPTION:Reservation URL: https://www.airbnb.com/hosting/reservations/
- details/xxx\\nPhone Number (Last 4 Digits): 0000
-SUMMARY:Reserved
-END:VEVENT
-END:VCALENDAR
-EOS;
+		$lineFoldingFileName = __DIR__ . '/examples/LineFolding.ics';
+		$this->assertFileExists($lineFoldingFileName, "Missing file {$lineFoldingFileName}");
+
+		$sample = \file_get_contents($lineFoldingFileName);
+		$this->assertNotEmpty($sample, "File {$lineFoldingFileName} appears to be emtpy");
 
 		$test = new \ICalendarOrg\ZCiCal($sample);
 
