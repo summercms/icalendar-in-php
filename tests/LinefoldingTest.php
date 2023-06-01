@@ -31,8 +31,7 @@ DESCRIPTION:Reservation URL: https://www.airbnb.com/hosting/reservations/
 SUMMARY:Reserved
 END:VEVENT
 END:VCALENDAR
-EOS
-		;
+EOS;
 
 		$test = new \ICalendarOrg\ZCiCal($sample);
 
@@ -42,14 +41,14 @@ EOS
 		$node = $test->tree->child[0];
 
 		// Make sure all expected fields are there
-		foreach (array('DTEND', 'DTSTART', 'UID', 'DESCRIPTION', 'SUMMARY')
+		foreach (['DTEND', 'DTSTART', 'UID', 'DESCRIPTION', 'SUMMARY']
 				 as $field) {
 			$this->assertArrayHasKey($field, $node->data);
 		}
 
 		// Make sure description matches
 		$this->assertEquals(
-			trim($node->data['DESCRIPTION']->values[0]),
+			\trim($node->data['DESCRIPTION']->values[0]),
 			'Reservation URL: https://www.airbnb.com/hosting/reservations/details/xxx\nPhone Number (Last 4 Digits): 0000'
 		);
 		}

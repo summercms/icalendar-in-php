@@ -125,10 +125,10 @@ class ZCiCal
 				elseif (' ' == \substr($line, 0, 1))
 					{
 						// This appends to the previous line.
-						if ($lastdatakey !== null) {
+						if (null !== $lastdatakey) {
 							$this->curnode->data[$lastdatakey]->values[
-								count($this->curnode->data[$lastdatakey]->values)-1
-							] .= ltrim($line);
+								\count($this->curnode->data[$lastdatakey]->values) - 1
+							] .= \ltrim($line);
 						}
 					}
 				else
