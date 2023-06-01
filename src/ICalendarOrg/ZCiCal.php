@@ -223,10 +223,7 @@ class ZCiCal
 		}
 
 	/**
-	 * CountEvents()
-	 *
 	 * Return the # of VEVENTs in the object
-	 *
 	 */
 	public function countEvents() : int
 		{
@@ -247,10 +244,7 @@ class ZCiCal
 		}
 
 	/**
-	 * CountVenues()
-	 *
 	 * Return the # of VVENUEs in the object
-	 *
 	 */
 	public function countVenues() : int
 		{
@@ -284,8 +278,6 @@ class ZCiCal
 
 	/**
 	 * Escape slashes, commas and semicolons in strings
-	 *
-	 *
 	 */
 	public static function formatContent(string $content) : string
 		{

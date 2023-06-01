@@ -400,7 +400,6 @@ class ZCRecurringDate
 
 	/**
 	 * display debug message
-	 *
 	 */
 	public function debug(int $level, string $msg) : self
 		{
@@ -419,7 +418,6 @@ class ZCRecurringDate
 	 *
 	 * @throws \Exception
 	 * @return array<int>
-	 *
 	 */
 	public function getDates(?int $maxdate = null) : array
 		{
@@ -609,8 +607,6 @@ class ZCRecurringDate
 
 	/**
 	 * set debug level (0: none, 1: minimal, 2: more output)
-	 *
-	 *
 	 */
 	public function setDebug(int $level) : self
 		{
@@ -621,8 +617,6 @@ class ZCRecurringDate
 
 	/**
 	 * save error
-	 *
-	 *
 	 */
 	public function setError(string $msg) : self
 		{
@@ -1020,7 +1014,6 @@ class ZCRecurringDate
 	 * Determine if the loop has reached the end date
 	 *
 	 * @param array<int> $rdates array of repeating dates
-	 *
 	 */
 	private function maxDates(array $rdates) : bool
 		{

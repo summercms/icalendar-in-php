@@ -53,7 +53,6 @@ class ZDateHelper
 	 *
 	 * @param int $month Month is between 1 and 12 inclusive
 	 * @param int $year is between 1 and 32767 inclusive
-	 *
 	 */
 	public static function DayInMonth(int $month, int $year) : int
 		{
@@ -159,8 +158,6 @@ class ZDateHelper
 		}
 
 	/**
-	 * fromUnixDate()
-	 *
 	 * Take Unix timestamp and format to iCal date string
 	 *
 	 * @param int $datetime Unix timestamp, leave blank for current date/time
@@ -180,8 +177,6 @@ class ZDateHelper
 		}
 
 	/**
-	 * fromUnixDateTime()
-	 *
 	 * Take Unix timestamp and format to iCal date/time string
 	 *
 	 * @param int $datetime Unix timestamp, leave blank for current date/time
@@ -204,7 +199,6 @@ class ZDateHelper
 	 * Format Unix timestamp to iCal date-time string
 	 *
 	 * @param int $datetime Unix timestamp
-	 *
 	 */
 	public static function fromUnixDateTimetoiCal(int $datetime) : string
 		{
@@ -343,7 +337,6 @@ class ZDateHelper
 	 * Convert iCal duration string to # of seconds
 	 *
 	 * @param string $duration iCal duration string
-	 *
 	 */
 	public static function iCalDurationtoSeconds(string $duration) : int
 		{
@@ -400,7 +393,6 @@ class ZDateHelper
 	 * @param int $daystart start of day in Unix timestamp format
 	 * @param int $begin Unix timestamp of starting date range
 	 * @param int $end Unix timestamp of end date range
-	 *
 	 */
 	public static function inDay(int $daystart, int $begin, int $end) : bool
 		{
@@ -424,7 +416,6 @@ class ZDateHelper
 	 *
 	 * @param int $date date in Unix timestamp format
 	 * @param string $tzid PHP recognized timezone (default is UTC)
-	 *
 	 */
 	public static function isAfterToday(int $date, string $tzid = 'UTC') : bool
 		{
@@ -440,7 +431,6 @@ class ZDateHelper
 	 *
 	 * @param int $date date in Unix timestamp format
 	 * @param string $tzid PHP recognized timezone (default is UTC)
-	 *
 	 */
 	public static function isBeforeToday(int $date, string $tzid = 'UTC') : bool
 		{
@@ -459,7 +449,6 @@ class ZDateHelper
 	 *
 	 * @param int $date date in Unix timestamp format
 	 * @param string $tzid PHP recognized timezone (default is UTC)
-	 *
 	 */
 	public static function isFuture(int $date, string $tzid = 'UTC') : bool
 		{
@@ -477,7 +466,6 @@ class ZDateHelper
 	 *
 	 * @param int $date date in Unix timestamp format
 	 * @param string $tzid PHP recognized timezone (default is UTC)
-	 *
 	 */
 	public static function isPast(int $date, string $tzid = 'UTC') : bool
 		{
@@ -492,7 +480,6 @@ class ZDateHelper
 	 *
 	 * @param int $date date in Unix timestamp format
 	 * @param string $tzid PHP recognized timezone (default is UTC)
-	 *
 	 */
 	public static function isToday(int $date, string $tzid = 'UTC') : bool
 		{
@@ -507,7 +494,6 @@ class ZDateHelper
 	 *
 	 * @param int $date date in Unix timestamp format
 	 * @param string $tzid PHP recognized timezone (default is UTC)
-	 *
 	 */
 	public static function isTomorrow(int $date, string $tzid = 'UTC') : bool
 		{
@@ -521,7 +507,6 @@ class ZDateHelper
 	 * Is given date fall on a weekend?
 	 *
 	 * @param int $date Unix timestamp
-	 *
 	 */
 	public static function isWeekend(int $date) : bool
 		{
@@ -534,7 +519,6 @@ class ZDateHelper
 	 * Return current Unix timestamp in local timezone
 	 *
 	 * @param string $tzid PHP recognized timezone
-	 *
 	 */
 	public static function now(string $tzid = 'UTC') : int
 		{
@@ -612,7 +596,6 @@ class ZDateHelper
 	 * Format Unix timestamp to SQL date
 	 *
 	 * @param int $t Unix timestamp
-	 *
 	 */
 	public static function toSQLDate(int $t = 0) : string
 		{
@@ -630,7 +613,6 @@ class ZDateHelper
 	 * Format Unix timestamp to SQL date-time
 	 *
 	 * @param int $t Unix timestamp
-	 *
 	 */
 	public static function toSQLDateTime(int $t = 0) : string
 		{
